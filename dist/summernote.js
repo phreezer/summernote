@@ -4762,8 +4762,12 @@
     /**
      * activate code view
      */
-    this.activate = function () {
-      $codable.val(dom.html($editable, options.prettifyHtml));
+    this.activate = function (html) {
+      if(html) {
+        $codable.val(html);
+      } else {
+        $codable.val(dom.html($editable, options.prettifyHtml));
+      }
       $codable.height($editable.height());
 
       context.invoke('toolbar.updateCodeview', true);
